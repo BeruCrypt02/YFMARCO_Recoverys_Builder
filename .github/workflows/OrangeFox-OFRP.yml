@@ -167,6 +167,7 @@ jobs:
         export ALLOW_MISSING_DEPENDENCIES=true
         set -e
         if [ "${{ inputs.MANIFEST_BRANCH }}" == '16.0' ]; then
+            export FOX_BUILD_DEVICE=${{ env.DEVICE_NAME }}
             lunch twrp_${{ env.DEVICE_NAME }}-bp2a-eng && make clean && mka ${{ inputs.BUILD_TARGET }}image
         elif [ "${{ inputs.MANIFEST_BRANCH }}" == '14.1' ]; then
             lunch twrp_${{ env.DEVICE_NAME }}-ap2a-eng && make clean && mka adbd ${{ inputs.BUILD_TARGET }}image
